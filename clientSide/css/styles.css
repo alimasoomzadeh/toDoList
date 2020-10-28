@@ -36,3 +36,7 @@
    .formCenter button:hover{
        background-color: #50335c;
    }
+
+   .pmError{
+       color: red;
+   }
