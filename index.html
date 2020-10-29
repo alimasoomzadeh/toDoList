@@ -12,15 +12,45 @@
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 
     <script src="clientSide/js/main.js"></script>
+    <script src="clientSide/pages/user/users.js"></script>
 </head>
 <body>
-<div class="container">
+<div class="container py-5">
     <div class="row">
-        <div class="col-sm">
+        <div class="col-sm-4">
         </div>
-        <div class="col-sm formCenter">
-            <button type="button" id="signIn" class="btn btn-secondary btn-lg">ثبت نام</button>
-            <button type="button" class="btn btn-secondary btn-lg">ورود</button>
+        <div class="col-sm-4 formCenter">
+            <div class="row">
+                <form id="formId">
+                    <div class="form-group">
+                        <label for="inputUserName">Username</label>
+                        <input type="email" name="userName" data-formName="logIn" class="form-control onblurInput"
+                               id="inputUserName" placeholder="Username">
+                        <small id="userNameError" class="form-text pmError"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword">Password</label>
+                        <input type="password" name="password" data-formName="logIn"
+                               class="form-control onblurInput"
+                               id="inputPassword" placeholder="Password">
+                        <small id="passwordError" class="form-text pmError"></small>
+                    </div>
+                    <div class="form-group">
+                        <small id="pmError" class="form-text pmError"></small>
+                    </div>
+                    <div class="py-1">
+                        <button id="btnSubmitLogIn" type="button" class="btn btn-secondary btn-lg btnForm">Sign in
+                        </button>
+                    </div>
+                    <div class="py-4">
+                        <button type="button" id="register" class="btn btn-outline-light btn-lg">Create an account
+                        </button>
+                    </div>
+
+                </form>
+                <div class="col-sm-4">
+                </div>
+            </div>
         </div>
         <div class="col-sm">
         </div>

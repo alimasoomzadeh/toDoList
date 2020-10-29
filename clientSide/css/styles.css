@@ -1,42 +1,106 @@
+/* color: #838182  #cccec3   #cbcec3  #838182;*/
 
-   /* color: #838182  #cccec3   #cbcec3  #838182;*/
+html, body {
+    background: #20002c !important;
+    background: -webkit-linear-gradient(to right, #cbb4d4, #20002c) !important;
+    background: linear-gradient(to right, #cbb4d4, #20002c) !important;
 
-   html, body{
-       direction: rtl;
-       background: #20002c !important;
-       background: -webkit-linear-gradient(to right, #cbb4d4, #20002c) !important;
-       background: linear-gradient(to right, #cbb4d4, #20002c)!important;
+}
 
-   }
+.formCenter {
+    background: #fff;
+    color: #333333;
+    height: auto;
+    padding: 2%;
+    margin: 0 auto;
+    overflow: hidden;
+    align-items: center;
+    justify-content: space-around;
+    display: flex;
+    float: none;
+    box-shadow: 0px 0px 3px 0px #21012d;
+    border-radius: 6px;
+}
 
-   .form-group{
-       text-align: right !important;
-   }
+.btnForm {
+    font-size: 20px !important;
+    background-color: #765b81 !important;
+}
 
-   .formCenter{
-       direction: rtl;
-       background: #fff;  /* fallback for old browsers */
-       top: 120px;
-       color: #333333;
-       height: auto;
-       padding: 2%;
-       margin: 0 auto;
-       overflow: hidden;
-       align-items: center;
-       justify-content: space-around;
-       display: flex;
-       float: none;
-       box-shadow: 0px 0px 3px 0px #21012d;
-       border-radius: 6px;
-   }
-   .formCenter button{
-       font-size: 20px;
-       background-color: #765b81;
-   }
-   .formCenter button:hover{
-       background-color: #50335c;
-   }
+.btnForm:hover {
+    background-color: #50335c !important;
+}
 
-   .pmError{
-       color: red;
-   }
+#btnSubmitLogIn {
+    width: 100%;
+}
+
+#btnSubmitRegister {
+    width: 100%;
+}
+
+.btnCancelRegister {
+    color: #b400ff;
+    cursor: pointer;
+}
+.btnCancelRegister:hover {
+    color: #522863;
+}
+
+
+#register {
+    width: 100%;
+    font-size: 20px !important;
+    color: #50335c !important;
+    border-color: #50335c !important;
+}
+
+#register:hover {
+    background-color: #50335c !important;
+    color: #ffffff !important;
+}
+
+.pmError {
+    color: red;
+}
+
+.header {
+    background-color: #fff;
+    height: 70px;
+}
+
+.card-header {
+    color: #fff !important;
+    height: 50px !important;
+    text-align: center !important;
+}
+
+.newTask {
+    background-color: #a06cad !important;
+}
+
+.inProgressTask {
+    background-color: #522863 !important;
+}
+
+.doneTask {
+    background-color: #28633d !important;
+}
+
+.cancelTask {
+    background-color: #7d1818 !important;
+}
+
+
+#btnNewTask {
+    text-align: center;
+    background-color: #522863;
+    color: #fff;
+    cursor: pointer;
+    border: 2px solid #fff;
+    border-radius: 5px;
+}
+
+#btnNewTask:hover {
+    background-color: #482563;
+}

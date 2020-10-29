@@ -1,6 +1,6 @@
 $(document).ready(function () {
-    $("#signIn").click(function () {
-        location.href = "clientSide/pages/user/signIn.html"
+    $("#register").click(function () {
+        location.href = "../clientSide/pages/user/register"
     });
 });
 
@@ -14,8 +14,10 @@ function checkUserName(url, userName) {
             contentType: 'application/json',
             success: function (data) {
                 if (data.length !== 0) {
+                    $("#userNameError").html("کلمه کاربری مورد نظر قبلا ثبت شده است");
                     returnValue = true;
                 } else {
+                    $("#userNameError").html("");
                     returnValue = false;
                 }
             },
@@ -76,15 +78,8 @@ function validations(name, type, value) {
         switch (type) {
             case "email":
                 if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(value)) {
-                    let dataDB = checkUserName("http://localhost:3000/users?userName=", $("#inputUserName").val());
-                    console.log(dataDB)
-                    if (dataDB === true) {
-                        $("#userNameError").html("کلمه کاربری مورد نظر قبلا ثبت شده است");
-                        return false;
-                    }else{
-                        $("#userNameError").html("");
-                        return true;
-                    }
+                    $("#userNameError").html("");
+                    return true;
                 } else {
                     $("#" + name + "Error").html("فرمت مورد نظر اشتباه می باشد");
                     return false;
@@ -115,7 +110,7 @@ function validations(name, type, value) {
                 break
         }
     } else {
-        $("#" + name + "Error").html("این فیلد اجباریست");
+        $("#" + name + "Error").html("Sorry, This field is required." );
         return false;
     }
 }
