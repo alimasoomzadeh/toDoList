@@ -72,7 +72,7 @@ function postDataDB(url, data) {
     return returnValue;
 }
 
-function validations(name, type, value) {
+function validations(name, type, value,title) {
     $("#" + name + "Error").html("");
     if (value !== undefined && value !== "") {
         switch (type) {
@@ -81,7 +81,7 @@ function validations(name, type, value) {
                     $("#userNameError").html("");
                     return true;
                 } else {
-                    $("#" + name + "Error").html("فرمت مورد نظر اشتباه می باشد");
+                    $("#" + name + "Error").html("Sorry, The " + title +" format is incorrect.");
                     return false;
                 }
                 break
@@ -90,7 +90,7 @@ function validations(name, type, value) {
                     $("#" + name + "Error").html("");
                     return true;
                 } else {
-                    $("#" + name + "Error").html("فرمت فیلد مورد نظر اشتباه می باشد");
+                    $("#" + name + "Error").html("Sorry, The " + title +" format is incorrect.");
                     return false;
                 }
                 break
@@ -100,17 +100,17 @@ function validations(name, type, value) {
                         $("#" + name + "Error").html("");
                         return true;
                     } else {
-                        $("#" + name + "Error").html("طول کلمه عبور باید مساوی یا بزرگتر از 8 کاراکتر باشد ");
+                        $("#" + name + "Error").html("Sorry, Password length must be equal to or greater than 8 characters.");
                         return false;
                     }
                 } else {
-                    $("#" + name + "Error").html("کلمه عبور فقط باید عدد باشد ");
+                    $("#" + name + "Error").html("Sorry, Just enter a number.");
                     return false;
                 }
                 break
         }
     } else {
-        $("#" + name + "Error").html("Sorry, This field is required." );
+        $("#" + name + "Error").html("Sorry, This field is required.");
         return false;
     }
 }

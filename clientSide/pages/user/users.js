@@ -5,9 +5,10 @@ $(document).ready(function () {
         let name = e.target.name;
         let type = e.target.type;
         let value = e.target.value;
+        let title = $(this).attr("data-title");
         let formName = $(this).attr("data-formName");
         console.log($(this).attr("data-formName"))
-        validDataRegister = validations(name, type, value);
+        validDataRegister = validations(name, type, value,title);
         if (validDataRegister === true) {
             if (formName === "register") {
                 if (type == "email") {
