@@ -72,45 +72,68 @@ function postDataDB(url, data) {
     return returnValue;
 }
 
-function validations(name, type, value,title) {
+function validations(name, validation, value, title) {
+    let types = validation.split(",");
     $("#" + name + "Error").html("");
     if (value !== undefined && value !== "") {
-        switch (type) {
-            case "email":
-                if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(value)) {
-                    $("#userNameError").html("");
-                    return true;
-                } else {
-                    $("#" + name + "Error").html("Sorry, The " + title +" format is incorrect.");
-                    return false;
-                }
-                break
-            case "text":
-                if (/^[A-Za-z]+$/.test(value)) {
-                    $("#" + name + "Error").html("");
-                    return true;
-                } else {
-                    $("#" + name + "Error").html("Sorry, The " + title +" format is incorrect.");
-                    return false;
-                }
-                break
-            case "password":
-                if (value.match(/[0-9]/g))  {
-                    if (value.length >= 8)  {
-                        $("#" + name + "Error").html("");
-                        return true;
+        for (let i = 0; i < types.length; i++) {
+            let type = types[i];
+            let count = "";
+            if (type.split("=")[0] == "min") {
+                type = "min";
+            }
+            if (type.split("=")[0] == "max") {
+                type = "max";
+            }
+            switch (type) {
+                case "email":
+                    if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(value)) {
+                        $("#userNameError").html("");
                     } else {
-                        $("#" + name + "Error").html("Sorry, Password length must be equal to or greater than 8 characters.");
-                        return false;
+                        $("#" + name + "Error").html("Please The " + title + " format is incorrect.");
                     }
-                } else {
-                    $("#" + name + "Error").html("Sorry, Just enter a number.");
-                    return false;
-                }
-                break
+                    break;
+                case "text":
+                    if (/^[A-Za-z]+$/.test(value)) {
+                        $("#" + name + "Error").html("");
+                    } else {
+                        $("#" + name + "Error").html("Please The " + title + " format is incorrect.");
+                    }
+                    break;
+                case "password":
+                    if (value.match(/[0-9]/g)) {
+                        if (value.length >= 8) {
+                            $("#" + name + "Error").html("");
+                        } else {
+                            $("#" + name + "Error").html("Please password should be at least 8 characters.");
+                        }
+                    } else {
+                        $("#" + name + "Error").html("Please Just enter a number.");
+                    }
+                    break;
+                case "number":
+                    if (/^\+?[0-9(),.-]+$/.test(value)) {
+                        $("#" + name + "Error").html("");
+                    } else {
+                        $("#" + name + "Error").html("Please enter a valid number.");
+                    }
+                    break;
+                case "min":
+                    count = types[i].split("=")[1];
+                    if (parseInt(value) < parseInt(count)) {
+                        $("#" + name + "Error").html("Please password should be at least " + count + " characters.");
+                    }
+                    break;
+                case "max":
+                    count = types[i].split("=")[1];
+                    if (parseInt(value) > parseInt(count)) {
+                        $("#" + name + "Error").html("Please password should be at most " + count + " characters.");
+                    }
+                    break;
+            }
         }
     } else {
-        $("#" + name + "Error").html("Sorry, This field is required.");
+        $("#" + name + "Error").html("Please This field is required.");
         return false;
     }
 }
