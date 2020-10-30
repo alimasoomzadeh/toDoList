@@ -73,6 +73,7 @@ function postDataDB(url, data) {
 }
 
 function validations(name, validation, value, title) {
+    let flagReturn = false;
     let types = validation.split(",");
     $("#" + name + "Error").html("");
     if (value !== undefined && value !== "") {
@@ -89,51 +90,63 @@ function validations(name, validation, value, title) {
                 case "email":
                     if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(value)) {
                         $("#userNameError").html("");
+                        flagReturn = true;
                     } else {
                         $("#" + name + "Error").html("Please The " + title + " format is incorrect.");
+                        flagReturn = false;
                     }
                     break;
                 case "text":
                     if (/^[A-Za-z]+$/.test(value)) {
                         $("#" + name + "Error").html("");
+                        flagReturn = true;
                     } else {
                         $("#" + name + "Error").html("Please The " + title + " format is incorrect.");
+                        flagReturn = false;
                     }
                     break;
                 case "password":
                     if (value.match(/[0-9]/g)) {
                         if (value.length >= 8) {
                             $("#" + name + "Error").html("");
+                            flagReturn = true;
                         } else {
                             $("#" + name + "Error").html("Please password should be at least 8 characters.");
+                            flagReturn = false;
                         }
                     } else {
                         $("#" + name + "Error").html("Please Just enter a number.");
+                        flagReturn = false;
                     }
                     break;
                 case "number":
                     if (/^\+?[0-9(),.-]+$/.test(value)) {
                         $("#" + name + "Error").html("");
+                        flagReturn = true;
                     } else {
                         $("#" + name + "Error").html("Please enter a valid number.");
+                        flagReturn = false;
                     }
                     break;
                 case "min":
                     count = types[i].split("=")[1];
                     if (parseInt(value) < parseInt(count)) {
                         $("#" + name + "Error").html("Please password should be at least " + count + " characters.");
+                        flagReturn = false;
                     }
                     break;
                 case "max":
                     count = types[i].split("=")[1];
                     if (parseInt(value) > parseInt(count)) {
                         $("#" + name + "Error").html("Please password should be at most " + count + " characters.");
+                        flagReturn = false;
                     }
                     break;
             }
         }
     } else {
         $("#" + name + "Error").html("Please This field is required.");
-        return false;
+        flagReturn = false;
     }
+    return flagReturn;
 }
