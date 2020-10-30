@@ -1,19 +1,21 @@
 $(document).ready(function () {
-    $(".onblurInput").blur(function (e) {
+    $(".onblurInput").blur(function () {
+        console.log(this)
         validations(this);
     });
-
 
     $("#btnCancel").click(function () {
         location.href = "/"
     });
 
     $("#btnSubmitRegister").click(function () {
-        if (validDataRegister === true) {
-            formDataRegister["id"] = Math.floor(Math.random() * 1000);
-            let res = postDataDB("http://localhost:3000/users", formDataRegister)
+        let valid = validationsForm("registerformId");
+        if (valid === true) {
+            let dataForm = getValuesForm("registerformId");
+            dataForm["id"] = Math.floor(Math.random() * 1000);
+            let res = postDataDB("http://localhost:3000/users", dataForm)
             if (res !== undefined) {
-                $("#formId").html(
+                $("#registerformId").html(
                     '<div class="alert alert-success" role="alert">'
                     + 'اطلاعات شما با موفقیت ثبت شد'
                     + '</div>');

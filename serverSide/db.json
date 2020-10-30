@@ -3,7 +3,7 @@
     {
       "id": 1,
       "userName": "ali@yahoo.com",
-      "password": 123456789,
+      "password": "123456789",
       "firstName": "ali",
       "lastName": "masoomzadeh",
       "emailAddress": "ali@yahoo.com"

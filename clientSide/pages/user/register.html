@@ -13,6 +13,7 @@
     <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 
     <script type="text/javascript" src="../../js/main.js"></script>
+    <script type="text/javascript" src="../../js/validations.js"></script>
     <script type="text/javascript" src="users.js"></script>
 
 </head>
@@ -22,33 +23,30 @@
         <div class="col-sm">
         </div>
         <div class="col-sm formCenter">
-            <form id="formId">
+            <form id="registerformId">
                 <div class="form-group">
-                    <label for="inputUserName">Username</label>
-                    <input type="email" name="userName" data-formName="register" data-title="Username"
-                           class="form-control onblurInput"
-                           id="inputUserName" placeholder="Username" data-validation="email">
+                    <label for="userName">Username</label>
+                    <input type="email" data-title="Username" class="form-control onblurInput"
+                           id="userName" placeholder="Username"
+                           data-validation="required,email,checkDuplicateUserName">
                     <small id="userNameError" class="form-text pmError"></small>
                 </div>
                 <div class="form-group">
-                    <label for="inputFirstName">First Name</label>
-                    <input type="text" name="firstName" data-formName="register" data-title="First Name"
-                           class="form-control onblurInput"
-                           id="inputFirstName" placeholder="First Name" data-validation="text">
+                    <label for="firstName">First Name</label>
+                    <input type="text" data-title="First Name" class="form-control onblurInput"
+                           id="firstName" placeholder="First Name" data-validation="required,text">
                     <small id="firstNameError" class="form-text pmError"></small>
                 </div>
                 <div class="form-group">
-                    <label for="inputLastName">Last Name</label>
-                    <input type="text" name="lastName" data-formName="register" data-title="Last Name"
-                           class="form-control onblurInput"
-                           id="inputLastName" placeholder="Last Name" data-validation="text">
+                    <label for="lastName">Last Name</label>
+                    <input type="text" data-title="Last Name" class="form-control onblurInput"
+                           id="lastName" placeholder="Last Name" data-validation="required,text">
                     <small id="lastNameError" class="form-text pmError"></small>
                 </div>
                 <div class="form-group">
-                    <label for="inputPassword">Password</label>
-                    <input type="password" name="password" data-formName="register" data-title="Password"
-                           class="form-control onblurInput"
-                           id="inputPassword" placeholder="Password" data-validation="Password">
+                    <label for="password">Password</label>
+                    <input type="password" data-title="Password" class="form-control onblurInput"
+                           id="password" placeholder="Password" data-validation="required,Password">
                     <small id="passwordError" class="form-text pmError"></small>
                 </div>
                 <div>
