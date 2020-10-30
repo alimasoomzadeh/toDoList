@@ -4,14 +4,9 @@
       "id": 1,
       "userName": "ali@yahoo.com",
       "password": 123456789,
-      "firstName": "علی",
-      "lastName": "معصوم زاده",
+      "firstName": "ali",
+      "lastName": "masoomzadeh",
       "emailAddress": "ali@yahoo.com"
-    },
-    {
-      "userName": "ali@yahoo.com",
-      "password": "123212321",
-      "id": 592
     }
   ],
   "todoList": []

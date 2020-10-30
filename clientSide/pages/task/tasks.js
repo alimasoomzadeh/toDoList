@@ -4,14 +4,27 @@ $(document).ready(function () {
         let memberData = getDataDB("http://localhost:3000/users?id=" + memberId);
         $("#memberNameLabel").html(memberData[0].firstName + " " + memberData[0].lastName);
 
-        $("#btnNewTask").click(function () {
-            location.href = "../task/newTask?" + memberId;
-
-        });
-
 
     } else {
         location.href = "/"
     }
+
+    $("#btnNewTask").click(function () {
+        location.href = "../task/newTask?" + memberId;
+    });
+
+    let formDataRegister = {};
+    let validDataRegister = false;
+    $(".onblurInput").blur(function (e) {
+        let name = e.target.name;
+        let value = e.target.value;
+        let validation = $(this).attr("data-validation");
+        let title = $(this).attr("data-title");
+        let formName = $(this).attr("data-formName");
+        validDataRegister = validations(name, validation, value, title);
+        if (validDataRegister === true) {
+                formDataRegister[name] = value;
+        }
+    });
 
 });
