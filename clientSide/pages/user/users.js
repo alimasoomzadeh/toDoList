@@ -1,27 +1,6 @@
 $(document).ready(function () {
-    let formDataRegister = {};
-    let validDataRegister = false;
     $(".onblurInput").blur(function (e) {
-        let name = e.target.name;
-        let value = e.target.value;
-        let validation = $(this).attr("data-validation");
-        let title = $(this).attr("data-title");
-        let formName = $(this).attr("data-formName");
-        validDataRegister = validations(name, validation, value,title);
-        if (validDataRegister === true) {
-            if (formName === "register") {
-                if (validation == "email") {
-                    let check = checkUserName("http://localhost:3000/users?userName=", $("#inputUserName").val());
-                    if (check === false) {
-                        formDataRegister[name] = value;
-                    }
-                } else {
-                    formDataRegister[name] = value;
-                }
-            } else {
-                formDataRegister[name] = value;
-            }
-        }
+        validations(this);
     });
 
 
@@ -47,26 +26,17 @@ $(document).ready(function () {
 
 
     $("#btnSubmitLogIn").click(function () {
-        let username = $("#inputUserName").val();
-        let password = $("#inputPassword").val();
-        $("#pmError").html("");
-        if (username === undefined || username === "" ||  username === null) {
-            $("#userNameError").html("Sorry, This field is required." );
-            return false;
-        }
-        if (password === undefined || password === "" ||  password === null) {
-            $("#passwordError").html("Sorry, This field is required." );
-            return false;
-        }
-        if (username !== undefined && username !== "" && password !== undefined && password !== "") {
-            let res = getDataDB("http://localhost:3000/users?userName=" + username + "&password=" + password)
+        let valid = validationsForm("logInFormId");
+        if (valid === true) {
+            let dataForm = getValuesForm("logInFormId");
+            let res = getDataDB("http://localhost:3000/users?userName=" + dataForm.userName + "&password=" + dataForm.password)
             if (res !== undefined && res.length !== 0) {
                 let id = res[0].id;
                 location.href = "../clientSide/pages/task/master?" + id;
-            } else {
-                $("#pmError").html("Sorry, we don't recognize this username and password.");
+            }else{
+                $("#pmError").html("Please we don't recognize this username and password.");
+                return false;
             }
         }
     });
-
 });

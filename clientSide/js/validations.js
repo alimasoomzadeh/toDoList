@@ -128,9 +128,10 @@ function validations(e) {
 };
 
 function validationsForm(formId) {
+    let valid = true;
     $('#' + formId + ' ' + 'input,textarea').each(function () {
-      let valid = validations(this);
+      valid = validations(this);
       return valid;
     });
-
+    return valid;
 }

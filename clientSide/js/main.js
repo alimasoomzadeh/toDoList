@@ -6,11 +6,12 @@ $(document).ready(function () {
 
 function getValuesForm(formId) {
     let dataForm = {};
-    $('#' + formId + ' ' + 'input').each(function () {
+    $('#' + formId + ' ' + 'input,textarea').each(function () {
         let id = $(this).attr("id");
         let value = $(this).val();
         dataForm[id] = value;
     });
+    return dataForm;
 }
 
 function getDataDB(url) {
