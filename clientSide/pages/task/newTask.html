@@ -24,41 +24,46 @@
         </div>
     </div>
 </div>
-
-<div class="container py-4">
-    <div class="row">
-        <div class="col-sm">
-        </div>
-        <div class="col-sm formCenter">
-            <form id="formId">
-                <div class="form-group">
-                    <label for="inputTitle">Title</label>
-                    <input type="text" name="title" data-formName="newTask" data-title="Title"
-                           class="form-control onblurInput"
-                           id="inputTitle" placeholder="Title" >
-                    <small id="titleError" class="form-text pmError"></small>
-                </div>
-                <div class="form-group">
-                    <label for="textareaDescription">Description</label>
-                    <textarea type="text" class="form-control onblurInput" name="description" id="textareaDescription"
-                              data-formName="newTask" data-title="Description" rows="4"></textarea>
-                    <small id="descriptionError" class="form-text pmError"></small>
-                </div>
-                <div class="form-group">
-                    <label for="inputDuration">Duration</label>
-                    <input type="text" name="duration" data-formName="register" data-title="Duration"
-                           class="form-control onblurInput"
-                           id="inputDuration" placeholder="Week" data-validation="number,min=1,max=4">
-                    <small id="durationError" class="form-text pmError"></small>
-                </div>
-                <div>
-                    <button id="btnSubmitNewTask" type="button" class="btn btn-secondary btn-lg btnForm">
-                        Confirmation
-                    </button>
-                </div>
-            </form>
-        </div>
-        <div class="col-sm">
+<div class="col-sm-12">
+    <div class="container py-4">
+        <div class="row">
+            <div class="col-sm">
+            </div>
+            <div class="col-sm formCenter">
+                <form id="formId">
+                    <div class="form-group">
+                        <label for="inputTitle">Title</label>
+                        <input type="text" name="title" data-formName="newTask" data-title="Title"
+                               class="form-control onblurInput"
+                               id="inputTitle" placeholder="Title">
+                        <small id="titleError" class="form-text pmError"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="textareaDescription">Description</label>
+                        <textarea type="text" class="form-control onblurInput" name="description"
+                                  id="textareaDescription"
+                                  data-formName="newTask" data-title="Description" rows="4"></textarea>
+                        <small id="descriptionError" class="form-text pmError"></small>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputDuration">Duration</label>
+                        <input type="text" name="duration" data-formName="register" data-title="Duration"
+                               class="form-control onblurInput"
+                               id="inputDuration" placeholder="Week" data-validation="number,min=1,max=4">
+                        <small id="durationError" class="form-text pmError"></small>
+                    </div>
+                    <div>
+                        <button id="btnCancel" type="button" class="btn btn-secondary btn-lg btnForm">
+                            Cancel
+                        </button>
+                        <button id="btnSubmitNewTask" type="button" class="btn btn-secondary btn-lg btnForm">
+                            Confirmation
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-sm">
+            </div>
         </div>
     </div>
 </div>

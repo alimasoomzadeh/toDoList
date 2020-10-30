@@ -27,4 +27,8 @@ $(document).ready(function () {
         }
     });
 
+    $("#btnCancel").click(function () {
+        location.href = "../task/master?" + memberId;
+    });
+
 });
