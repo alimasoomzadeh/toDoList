@@ -12,6 +12,7 @@
     <script src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 
     <script src="clientSide/js/main.js"></script>
+    <script src="clientSide/js/validations.js"></script>
     <script src="clientSide/pages/user/users.js"></script>
 </head>
 <body>
@@ -21,19 +22,19 @@
         </div>
         <div class="col-sm-4 formCenter">
             <div class="row">
-                <form id="formId">
+                <form id="logInFormId">
                     <div class="form-group">
-                        <label for="inputUserName">Username</label>
-                        <input type="email" name="userName" data-formName="logIn" data-title="Username"
+                        <label for="userName">Username</label>
+                        <input type="email"  data-formName="logIn" data-title="Username"
                                class="form-control onblurInput"
-                               id="inputUserName" placeholder="Username" data-validation="email">
+                               id="userName" placeholder="Username" data-validation="required,email,checkDuplicateUserName">
                         <small id="userNameError" class="form-text pmError"></small>
                     </div>
                     <div class="form-group">
-                        <label for="inputPassword">Password</label>
-                        <input type="password" name="password" data-formName="logIn" data-title="Password"
+                        <label for="password">Password</label>
+                        <input type="password"  data-formName="logIn" data-title="Password"
                                class="form-control onblurInput"
-                               id="inputPassword" placeholder="Password" data-validation="Password">
+                               id="password" placeholder="Password" data-validation="required,password,minlength=8">
                         <small id="passwordError" class="form-text pmError"></small>
                     </div>
                     <div class="form-group">
