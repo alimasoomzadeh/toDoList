@@ -3,8 +3,6 @@ $(document).ready(function () {
     if (memberId !== undefined && memberId !== "" && memberId !== null) {
         let memberData = getDataDB("http://localhost:3000/users?id=" + memberId);
         $("#memberNameLabel").html(memberData[0].firstName + " " + memberData[0].lastName);
-
-
     } else {
         location.href = "/"
     }
@@ -30,5 +28,30 @@ $(document).ready(function () {
     $("#btnCancel").click(function () {
         location.href = "../task/master?" + memberId;
     });
+
+
+    $("#btnSubmitNewTask").click(function () {
+        let valid = validationsForm("newTaskFormId");
+        if (valid === true) {
+            let dataForm = getValuesForm("newTaskFormId");
+            dataForm["id"] = Math.floor(Math.random() * 1000);
+            dataForm["userId"] = memberId;
+            dataForm["type"] = "BACKLOG";
+            dataForm["status"] = "BACKLOG";
+            let res = postDataDB("http://localhost:3000/todoList", dataForm);
+            if (res !== undefined) {
+                $("#newTaskFormId").html(
+                    '<div class="alert alert-success" role="alert">'
+                    + 'Successfully registered'
+                    + '</div>');
+                setTimeout(function () {
+                    location.href = "../task/master?" + memberId;
+                }, 2000);
+            }
+
+
+        }
+
+    })
 
 });

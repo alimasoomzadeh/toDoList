@@ -13,6 +13,7 @@
     <script src="../../../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
 
     <script type="text/javascript" src="../../js/main.js"></script>
+    <script type="text/javascript" src="../../js/validations.js"></script>
     <script type="text/javascript" src="tasks.js"></script>
 
 </head>
@@ -30,26 +31,23 @@
             <div class="col-sm">
             </div>
             <div class="col-sm formCenter">
-                <form id="formId">
+                <form id="newTaskformId">
                     <div class="form-group">
-                        <label for="inputTitle">Title</label>
-                        <input type="text" name="title" data-formName="newTask" data-title="Title"
-                               class="form-control onblurInput"
-                               id="inputTitle" placeholder="Title">
+                        <label for="title">Title</label>
+                        <input type="text"  data-title="Title" class="form-control onblurInput"
+                               id="title" placeholder="Title" data-validation="required">
                         <small id="titleError" class="form-text pmError"></small>
                     </div>
                     <div class="form-group">
-                        <label for="textareaDescription">Description</label>
-                        <textarea type="text" class="form-control onblurInput" name="description"
-                                  id="textareaDescription"
-                                  data-formName="newTask" data-title="Description" rows="4"></textarea>
+                        <label for="description">Description</label>
+                        <textarea type="text" class="form-control onblurInput" id="description"
+                                   data-title="Description" rows="4"></textarea>
                         <small id="descriptionError" class="form-text pmError"></small>
                     </div>
                     <div class="form-group">
-                        <label for="inputDuration">Duration</label>
-                        <input type="text" name="duration" data-formName="register" data-title="Duration"
-                               class="form-control onblurInput"
-                               id="inputDuration" placeholder="Week" data-validation="number,min=1,max=4">
+                        <label for="duration">Duration</label>
+                        <input type="text"  data-title="Duration" class="form-control onblurInput"
+                               id="duration" placeholder="Week" data-validation="required,number,min=1,max=4">
                         <small id="durationError" class="form-text pmError"></small>
                     </div>
                     <div>
