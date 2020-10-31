@@ -126,4 +126,17 @@ html, body {
 .backLogTaskBox-footer {
     background-color: #edc8fd;
     width: 100%;
+    padding-left: 3%;
+}
+
+.iconTime{
+    font-size: 14px;
+}
+.numberTime{
+    font-size: 16px;
+    margin: 0 1px 0px 3px;
+    font-weight: 600;
+}
+.unitTime{
+    font-size: 10px;
 }
