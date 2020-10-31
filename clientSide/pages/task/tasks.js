@@ -10,14 +10,18 @@ $(document).ready(function () {
             if (todoList !== undefined && todoList !== null) {
                 for (let i = 0; i < todoList.length; i++) {
                     $("#backLogBody").append(
-                         '<div class="col-mb-5  backLogTaskBox">'
+                        '<div class="col-mb-5  backLogTaskBox">'
                         + '<div class="backLogTaskBox-header">'
                         + '<h5>' + todoList[i].title + '</h5>'
                         + '</div><div class="backLogTaskBox-body" >'
                         + todoList[i].description + '</div>'
                         + '<div class="backLogTaskBox-footer" >'
+                        + '<label><i class="fas fa-clock iconTime">'
+                        +'</i><span class="numberTime">'
                         + todoList[i].duration
-                        + '</div></div>'
+                        + '</span><span class="unitTime">'+'Week'
+                        + '</span></label>'
+                        +'</div></div>'
                     );
                 }
             }

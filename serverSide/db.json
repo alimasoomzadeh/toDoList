@@ -9,5 +9,36 @@
       "emailAddress": "ali@yahoo.com"
     }
   ],
-  "todoList": []
+  "todoList": [
+    {
+      "title": "test1",
+      "description": "fdsafdsadgfsadgafdsafdsafdsafsadfsadfdsafadsfsdafsafdafdsafafsa",
+      "duration": "1",
+      "id": 931,
+      "userId": "1",
+      "type": "BACKLOG",
+      "status": "BACKLOG",
+      "createDate": "2020/10/31"
+    },
+    {
+      "title": "test2",
+      "description": "fdsafdsafsafafdadfadfasdfdasfasdfasfdsafdsafasfsaffd",
+      "duration": "2",
+      "id": 452,
+      "userId": "1",
+      "type": "BACKLOG",
+      "status": "BACKLOG",
+      "createDate": "2020/10/31"
+    },
+    {
+      "title": "test3",
+      "description": "fgdasfdsfdasfsafsafdsafdsafsdhggdfsagfdsafdsa",
+      "duration": "3",
+      "id": 886,
+      "userId": "1",
+      "type": "BACKLOG",
+      "status": "BACKLOG",
+      "startDate": "2020/10/31"
+    }
+  ]
 }
