@@ -104,3 +104,26 @@ html, body {
 #btnNewTask:hover {
     background-color: #482563;
 }
+
+.backLogTaskBox{
+    border: 1px solid #cfcfcf;
+    border-radius: 5px;
+    margin-left:4%;
+    width: 45%;
+}
+.backLogTaskBox-header{
+    background-color: #edc7fd;
+    border-bottom: 1px solid #cfcfcf;
+    text-align: center;
+}
+.backLogTaskBox-body{
+    padding: 2%;
+    height: 50px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.backLogTaskBox-footer {
+    background-color: #edc8fd;
+    width: 100%;
+}

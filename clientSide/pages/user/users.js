@@ -20,7 +20,7 @@ $(document).ready(function () {
                     + '</div>');
                 setTimeout(function () {
                     location.href = "/";
-                }, 2000);
+                }, 2500);
             }
         }
     });
