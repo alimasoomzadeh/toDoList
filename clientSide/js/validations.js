@@ -8,7 +8,7 @@ function validationCheckUserName(url, userName) {
             contentType: 'application/json',
             success: function (data) {
                 if (data.length !== 0) {
-                    $("#userNameError").html("کلمه کاربری مورد نظر قبلا ثبت شده است");
+                    $("#userNameError").html("This username has been taken.");
                     returnValue = true;
                 } else {
                     $("#userNameError").html("");
@@ -50,7 +50,7 @@ function validations(e) {
                 }
                 if (type === "required") {
                     if (value == "" || value == null || value.length == 0) {
-                        $("#" + id + "Error").html("Please This field is required.");
+                        $("#" + id + "Error").html("This field is required.");
                         return false;
                     }
                 }
@@ -60,7 +60,7 @@ function validations(e) {
                             if (/^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(value)) {
                                 $("#" + id + "Error").html("");
                             } else {
-                                $("#" + id + "Error").html("Please The " + title + " format is incorrect.");
+                                $("#" + id + "Error").html("The " + title + " format is incorrect.");
                                 return false;
                             }
                             break;
@@ -68,7 +68,7 @@ function validations(e) {
                             if (/^[A-Za-z]+$/.test(value)) {
                                 $("#" + id + "Error").html("");
                             } else {
-                                $("#" + id + "Error").html("Please The " + title + " format is incorrect.");
+                                $("#" + id + "Error").html("The " + title + " format is incorrect.");
                                 return false;
                             }
                             break;
@@ -76,7 +76,7 @@ function validations(e) {
                             if (value.match(/[0-9]/g)) {
                                 $("#" + id + "Error").html("");
                             } else {
-                                $("#" + id + "Error").html("Please Just enter a number.");
+                                $("#" + id + "Error").html("Just enter a number.");
                                 return false;
                             }
                             break;
@@ -84,35 +84,35 @@ function validations(e) {
                             if (/^\+?[0-9(),.-]+$/.test(value)) {
                                 $("#" + id + "Error").html("");
                             } else {
-                                $("#" + id + "Error").html("Please enter a valid number.");
+                                $("#" + id + "Error").html("enter a valid number.");
                                 return false;
                             }
                             break;
                         case "min":
                             count = types[i].split("=")[1];
                             if (parseInt(value) < parseInt(count)) {
-                                $("#" + id + "Error").html("Please password should be at least " + count + " characters.");
+                                $("#" + id + "Error").html("The input should be " + count + " less.");
                                 return false;
                             }
                             break;
                         case "max":
                             count = types[i].split("=")[1];
                             if (parseInt(value) > parseInt(count)) {
-                                $("#" + id + "Error").html("Please password should be at most " + count + " characters.");
+                                $("#" + id + "Error").html("The input should be " + count + " more.");
                                 return false;
                             }
                             break;
                         case "minlength":
                             count = types[i].split("=")[1];
                             if (value.length < parseInt(count)) {
-                                $("#" + id + "Error").html("Please password should be at least " + count + " characters.");
+                                $("#" + id + "Error").html("The input length should be " + count + " less.");
                                 return false;
                             }
                             break;
                         case "maxlength":
                             count = types[i].split("=")[1];
                             if (value.length < parseInt(count)) {
-                                $("#" + id + "Error").html("Please password should be at most " + count + " characters.");
+                                $("#" + id + "Error").html("The input length should be " + count + " more.");
                                 return false;
                             }
                             break;
