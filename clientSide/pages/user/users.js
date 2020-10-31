@@ -8,13 +8,13 @@ $(document).ready(function () {
     });
 
     $("#btnSubmitRegister").click(function () {
-        let valid = validationsForm("registerformId");
+        let valid = validationsForm("registerFormId");
         if (valid === true) {
-            let dataForm = getValuesForm("registerformId");
+            let dataForm = getValuesForm("registerFormId");
             dataForm["id"] = Math.floor(Math.random() * 1000);
             let res = postDataDB("http://localhost:3000/users", dataForm);
             if (res !== undefined) {
-                $("#registerformId").html(
+                $("#registerFormId").html(
                     '<div class="alert alert-success" role="alert">'
                     + 'Successfully registered'
                     + '</div>');
