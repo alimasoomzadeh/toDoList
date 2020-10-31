@@ -54,3 +54,14 @@ function postDataDB(url, data) {
     });
     return returnValue;
 }
+
+
+function getNewDate() {
+    let date = new Date();
+    let month = date.getMonth() + 1;
+    let day = date.getDate();
+    let output = date.getFullYear() + '/' +
+        (month < 10 ? '0' : '') + month + '/' +
+        (day < 10 ? '0' : '') + day;
+    return output;
+}
