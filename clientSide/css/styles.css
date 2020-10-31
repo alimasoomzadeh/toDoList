@@ -108,7 +108,7 @@ html, body {
 .backLogTaskBox{
     border: 1px solid #cfcfcf;
     border-radius: 5px;
-    margin-left:4%;
+    margin: 0 0 3% 3%;
     width: 45%;
 }
 .backLogTaskBox-header{
