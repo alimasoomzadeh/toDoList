@@ -1,11 +1,10 @@
 $(document).ready(function () {
     $(".onblurInput").blur(function () {
-        console.log(this)
         validations(this);
     });
 
     $("#btnCancel").click(function () {
-        location.href = "/"
+        location.href = "/";
     });
 
     $("#btnSubmitRegister").click(function () {
@@ -13,14 +12,14 @@ $(document).ready(function () {
         if (valid === true) {
             let dataForm = getValuesForm("registerformId");
             dataForm["id"] = Math.floor(Math.random() * 1000);
-            let res = postDataDB("http://localhost:3000/users", dataForm)
+            let res = postDataDB("http://localhost:3000/users", dataForm);
             if (res !== undefined) {
                 $("#registerformId").html(
                     '<div class="alert alert-success" role="alert">'
-                    + 'اطلاعات شما با موفقیت ثبت شد'
+                    + 'Successfully registered'
                     + '</div>');
                 setTimeout(function () {
-                    location.href = "/"
+                    location.href = "/";
                 }, 2000);
             }
         }
@@ -36,7 +35,7 @@ $(document).ready(function () {
                 let id = res[0].id;
                 location.href = "../clientSide/pages/task/master?" + id;
             }else{
-                $("#pmError").html("Please we don't recognize this username and password.");
+                $("#pmError").html("username or password is not valid.");
                 return false;
             }
         }
