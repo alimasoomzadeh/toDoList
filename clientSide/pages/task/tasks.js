@@ -5,23 +5,34 @@ $(document).ready(function () {
         let memberData = getDataDB("http://localhost:3000/users?id=" + memberId);
         $("#memberNameLabel").html(memberData[0].firstName + " " + memberData[0].lastName);
 
+
+
         if (pageName == "master") {
             let todoList = getDataDB("http://localhost:3000/todoList?userId=" + memberId);
+            console.log("todoList",todoList)
             if (todoList !== undefined && todoList !== null) {
                 for (let i = 0; i < todoList.length; i++) {
                     $("#backLogBody").append(
                         '<div class="col-mb-5  backLogTaskBox">'
+                        + '<div class="box">'
                         + '<div class="backLogTaskBox-header">'
                         + '<h5>' + todoList[i].title + '</h5>'
                         + '</div><div class="backLogTaskBox-body" >'
-                        + todoList[i].description + '</div>'
+                        + todoList[i].description
+                        + '</div>'
                         + '<div class="backLogTaskBox-footer" >'
                         + '<label><i class="fas fa-clock iconTime">'
-                        +'</i><span class="numberTime">'
+                        + '</i><span class="numberTime">'
                         + todoList[i].duration
-                        + '</span><span class="unitTime">'+'Week'
+                        + '</span><span class="unitTime">' + 'Week'
                         + '</span></label>'
-                        +'</div></div>'
+                        + '</div></div><div class="middle">'
+                        + '<div class="btnChangeStatus">'
+                        +'<div class="row" >'
+                        + '<div class="col-3 viewTask" data-id="'+todoList[i].id+'" ><i data-id="'+todoList[i].id+'" class="fas fa-eye"></i></div>'
+                        + '<div class="col-3 changeStatusTask" data-id="'+todoList[i].id+'"  ><i data-id="'+todoList[i].id+'" class="fas fa-edit"></i></div>'
+                        +'</div>'
+                        + '</div></div></div>'
                     );
                 }
             }
@@ -38,10 +49,17 @@ $(document).ready(function () {
         location.href = "../task/master?" + memberId;
     });
 
-    $(".onblurInput").blur(function (e) {
+    $(".onblurInput").blur(function () {
         validations(this);
     });
 
+    $(".viewTask").click(function () {
+        console.log($(this).attr("data-id"))
+    });
+
+    $(".changeStatusTask").click(function () {
+        console.log($(this).attr("data-id"))
+    });
 
     $("#btnSubmitNewTask").click(function () {
         let valid = validationsForm("newTaskFormId");
