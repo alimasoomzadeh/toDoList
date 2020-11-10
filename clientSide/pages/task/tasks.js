@@ -7,7 +7,6 @@ $(document).ready(function () {
 
         if (pageName == "master") {
             let todoList = getDataDB("http://localhost:3000/todoList?userId=" + memberId);
-            console.log("todoList",todoList)
             if (todoList !== undefined && todoList !== null) {
                 for (let i = 0; i < todoList.length; i++) {
                     $("#backLogBody").append(
@@ -26,10 +25,10 @@ $(document).ready(function () {
                         + '</span></label>'
                         + '</div></div><div class="middle">'
                         + '<div class="btnChangeStatus">'
-                        +'<div class="row" >'
-                        + '<div class="col-3 viewTask" data-id="'+todoList[i].id+'" ><i data-id="'+todoList[i].id+'" class="fas fa-eye"></i></div>'
-                        + '<div class="col-3 changeStatusTask" data-id="'+todoList[i].id+'"  ><i data-id="'+todoList[i].id+'" class="fas fa-edit"></i></div>'
-                        +'</div>'
+                        + '<div class="row" >'
+                        + '<div class="col-3 viewTask" data-id="' + todoList[i].id + '" ><i data-id="' + todoList[i].id + '" class="fas fa-eye"></i></div>'
+                        + '<div class="col-3 changeStatusTask" data-id="' + todoList[i].id + '"  ><i data-id="' + todoList[i].id + '" class="fas fa-edit"></i></div>'
+                        + '</div>'
                         + '</div></div></div>'
                     );
                 }
@@ -52,11 +51,16 @@ $(document).ready(function () {
     });
 
     $(".viewTask").click(function () {
-        console.log($(this).attr("data-id"))
-        $('#viewTaskModal').modal('toggle')
-
-
-
+        let taskId = $(this).attr("data-id");
+        let tasksData = getDataDB("http://localhost:3000/todoList?id=" + taskId);
+        let taskData = tasksData[0];
+        console.log(taskData)
+        if (taskData !== undefined && taskData !== null) {
+            for (let i in taskData) {
+                $("#"+i+"ViewTask").val(taskData[i])
+            }
+        }
+        $('#taskModal').modal('toggle')
     });
 
     $(".changeStatusTask").click(function () {
