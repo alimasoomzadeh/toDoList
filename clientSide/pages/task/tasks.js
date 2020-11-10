@@ -52,6 +52,7 @@ $(document).ready(function () {
     });
 
     $(".btnTaskModal").click(function () {
+        $("#viewTaskModalTitleHeader").html("View Task");
         let pageType = $(this).attr("data-typeBtn");
         let taskId = $(this).attr("data-id");
         let tasksData = getDataDB("http://localhost:3000/todoList?id=" + taskId);
@@ -63,6 +64,7 @@ $(document).ready(function () {
         }
 
         if (pageType === "changeStatusTask") {
+            $("#viewTaskModalTitleHeader").html("Change Status Task");
             let btnTitle = "Todo";
             if(taskData["status"] === "TODO"){
                 btnTitle = "doing";
