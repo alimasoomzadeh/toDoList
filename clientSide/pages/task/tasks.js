@@ -5,8 +5,6 @@ $(document).ready(function () {
         let memberData = getDataDB("http://localhost:3000/users?id=" + memberId);
         $("#memberNameLabel").html(memberData[0].firstName + " " + memberData[0].lastName);
 
-
-
         if (pageName == "master") {
             let todoList = getDataDB("http://localhost:3000/todoList?userId=" + memberId);
             console.log("todoList",todoList)
@@ -55,6 +53,10 @@ $(document).ready(function () {
 
     $(".viewTask").click(function () {
         console.log($(this).attr("data-id"))
+        $('#viewTaskModal').modal('toggle')
+
+
+
     });
 
     $(".changeStatusTask").click(function () {
