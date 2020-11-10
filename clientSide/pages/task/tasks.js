@@ -9,6 +9,7 @@ $(document).ready(function () {
             let todoList = getDataDB("http://localhost:3000/todoList?userId=" + memberId);
             if (todoList !== undefined && todoList !== null) {
                 for (let i = 0; i < todoList.length; i++) {
+                    let x = 1;
                     $("#backLogBody").append(
                         '<div class="col-mb-5  backLogTaskBox">'
                         + '<div class="box">'
@@ -26,8 +27,8 @@ $(document).ready(function () {
                         + '</div></div><div class="middle">'
                         + '<div class="btnChangeStatus">'
                         + '<div class="row" >'
-                        + '<div class="col-3 viewTask" data-id="' + todoList[i].id + '" ><i data-id="' + todoList[i].id + '" class="fas fa-eye"></i></div>'
-                        + '<div class="col-3 changeStatusTask" data-id="' + todoList[i].id + '"  ><i data-id="' + todoList[i].id + '" class="fas fa-edit"></i></div>'
+                        + '<div class="col-3  btnTaskModal" data-typeBtn="viewTask" data-id="' + todoList[i].id + '" ><i data-typeBtn="viewTask" data-id="' + todoList[i].id + '" class="fas fa-eye"></i></div>'
+                        + '<div class="col-3  btnTaskModal" data-typeBtn="changeStatusTask" data-id="' + todoList[i].id + '"  ><i data-typeBtn="changeStatusTask" data-id="' + todoList[i].id + '" class="fas fa-edit"></i></div>'
                         + '</div>'
                         + '</div></div></div>'
                     );
@@ -50,21 +51,39 @@ $(document).ready(function () {
         validations(this);
     });
 
-    $(".viewTask").click(function () {
+    $(".btnTaskModal").click(function () {
+        let pageType = $(this).attr("data-typeBtn");
         let taskId = $(this).attr("data-id");
         let tasksData = getDataDB("http://localhost:3000/todoList?id=" + taskId);
         let taskData = tasksData[0];
-        console.log(taskData)
         if (taskData !== undefined && taskData !== null) {
             for (let i in taskData) {
-                $("#"+i+"ViewTask").val(taskData[i])
+                $("#" + i + "ViewTask").val(taskData[i])
             }
         }
-        $('#taskModal').modal('toggle')
-    });
 
-    $(".changeStatusTask").click(function () {
-        console.log($(this).attr("data-id"))
+        if (pageType === "changeStatusTask") {
+            let btnTitle = "Todo";
+            if(taskData["status"] === "TODO"){
+                btnTitle = "doing";
+            };
+            if(taskData["status"] === "DOING"){
+                btnTitle = "Verify";
+            };
+            if(taskData["status"] === "VERIFY"){
+                btnTitle = "Done";
+            };
+            $("#changePage").html("");
+            $("#changePage").append(
+                '<div class="form-group row">'
+                + '<label for="btnChangeStatusTask" class="col-sm-4 col-form-label">Change Status:</label>'
+                + '<div class="col-sm-8">'
+                + '<button id="btnChangeStatusTask" type="button" class="btn btn-outline-primary">'
+                + btnTitle
+                + '</button></div></div>'
+            );
+        }
+        $('#taskModal').modal('toggle')
     });
 
     $("#btnSubmitNewTask").click(function () {
