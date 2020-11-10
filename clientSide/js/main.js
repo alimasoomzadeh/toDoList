@@ -1,3 +1,4 @@
+
 $(document).ready(function () {
     $("#register").click(function () {
         location.href = "../clientSide/pages/user/register"
