@@ -51,6 +51,30 @@ $(document).ready(function () {
         validations(this);
     });
 
+    $("#btnSubmitNewTask").click(function () {
+        let valid = validationsForm("newTaskFormId");
+        if (valid === true) {
+            let dataForm = getValuesForm("newTaskFormId");
+            let createDate = getNewDate();
+            dataForm["id"] = Math.floor(Math.random() * 1000);
+            dataForm["userId"] = memberId;
+            dataForm["type"] = "BACKLOG";
+            dataForm["status"] = "BACKLOG";
+            dataForm["createDate"] = createDate;
+            let res = postDataDB("http://localhost:3000/todoList", dataForm);
+            if (res !== undefined) {
+                $("#newTaskFormId").html(
+                    '<div class="alert alert-success" role="alert">'
+                    + 'Successfully registered'
+                    + '</div>');
+                setTimeout(function () {
+                    location.href = "../task/master?" + memberId;
+                }, 2500);
+            }
+        }
+    })
+
+
     $(".btnTaskModal").click(function () {
         $("#viewTaskModalTitleHeader").html("View Task");
         let pageType = $(this).attr("data-typeBtn");
@@ -64,50 +88,51 @@ $(document).ready(function () {
         }
 
         if (pageType === "changeStatusTask") {
+            let nextTaskData = JSON.parse(JSON.stringify(taskData));
             $("#viewTaskModalTitleHeader").html("Change Status Task");
             let btnTitle = "Todo";
-            if(taskData["status"] === "TODO"){
+            nextTaskData["status"] = "TODO";
+            nextTaskData["type"] = "SPRINT";
+            if (taskData["status"] === "TODO") {
                 btnTitle = "doing";
-            };
-            if(taskData["status"] === "DOING"){
+                nextTaskData["status"] = "DOING";
+                nextTaskData["type"] = "SPRINT"
+            }
+            ;
+            if (taskData["status"] === "DOING") {
                 btnTitle = "Verify";
-            };
-            if(taskData["status"] === "VERIFY"){
+                nextTaskData["status"] = "VERIFY";
+                nextTaskData["type"] = "SPRINT"
+            }
+            ;
+            if (taskData["status"] === "VERIFY") {
                 btnTitle = "Done";
-            };
+                nextTaskData["status"] = "DONE";
+                nextTaskData["type"] = "COMPLETED"
+            }
+            ;
             $("#changePage").html("");
             $("#changePage").append(
                 '<div class="form-group row">'
                 + '<label for="btnChangeStatusTask" class="col-sm-4 col-form-label">Change Status:</label>'
                 + '<div class="col-sm-8">'
-                + '<button id="btnChangeStatusTask" type="button" class="btn btn-outline-primary">'
+                + '<button id="btnChangeStatusTask"   type="button" class="btn btn-outline-primary">'
                 + btnTitle
                 + '</button></div></div>'
             );
+            $("#btnChangeStatusTask").click(function () {
+                console.log("nextTaskData", nextTaskData);
+                let startDate = getNewDate();
+                nextTaskData["startDate"] = startDate;
+                putDataDB("http://localhost:3000/todoList/" + nextTaskData.id,nextTaskData);
+            });
         }
-        $('#taskModal').modal('toggle')
+        $('#taskModal').modal('toggle');
+
+
+
+
     });
 
-    $("#btnSubmitNewTask").click(function () {
-        let valid = validationsForm("newTaskFormId");
-        if (valid === true) {
-            let dataForm = getValuesForm("newTaskFormId");
-            let startDate = getNewDate();
-            dataForm["id"] = Math.floor(Math.random() * 1000);
-            dataForm["userId"] = memberId;
-            dataForm["type"] = "BACKLOG";
-            dataForm["status"] = "BACKLOG";
-            dataForm["createDate"] = startDate;
-            let res = postDataDB("http://localhost:3000/todoList", dataForm);
-            if (res !== undefined) {
-                $("#newTaskFormId").html(
-                    '<div class="alert alert-success" role="alert">'
-                    + 'Successfully registered'
-                    + '</div>');
-                setTimeout(function () {
-                    location.href = "../task/master?" + memberId;
-                }, 2500);
-            }
-        }
-    })
+
 });
