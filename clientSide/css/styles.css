@@ -79,16 +79,22 @@ html, body {
     background-color: #a06cad !important;
 }
 
-.inProgressTask {
+.sprintTask {
     background-color: #522863 !important;
 }
 
-.doneTask {
+.completedTask {
     background-color: #28633d !important;
 }
 
-.cancelTask {
-    background-color: #7d1818 !important;
+.todoTask {
+    background-color: #9062a2 !important;
+}
+.doingTask {
+    background-color: #6f4580 !important;
+}
+.verifyTask {
+    background-color: #562d67 !important;
 }
 
 
