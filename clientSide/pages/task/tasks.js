@@ -9,8 +9,8 @@ $(document).ready(function () {
             let todoList = getDataDB("http://localhost:3000/todoList?userId=" + memberId);
             if (todoList !== undefined && todoList !== null) {
                 for (let i = 0; i < todoList.length; i++) {
-                    let taskBoxStyle  = todoList[i]["type"] + "TaskBox";
-                    let taskBox = '<div class="col-mb-5  '+ taskBoxStyle +'">'
+                    let taskBoxStyle = todoList[i]["type"] + "TaskBox";
+                    let taskBox = '<div class="col-mb-5  ' + taskBoxStyle + '">'
                         + '<div class="box">'
                         + '<div class="backLogTaskBox-header">'
                         + '<h5>' + todoList[i].title + '</h5>'
@@ -30,12 +30,7 @@ $(document).ready(function () {
                         + '<div class="col-3  btnTaskModal" data-typeBtn="changeStatusTask" data-id="' + todoList[i].id + '"  ><i data-typeBtn="changeStatusTask" data-id="' + todoList[i].id + '" class="fas fa-edit"></i></div>'
                         + '</div>'
                         + '</div></div></div>';
-                    if (todoList[i]["status"] === "BACKLOG") {
-                        $("#backLogBody").append(taskBox);
-                    }
-                    if (todoList[i]["status"] === "TODO") {
-                        $("#todoBody").append(taskBox);
-                    }
+                    $("#" + todoList[i]["status"] + "Body").append(taskBox);
                 }
             }
         }
@@ -125,7 +120,6 @@ $(document).ready(function () {
                 + '</button></div></div>'
             );
             $("#btnChangeStatusTask").click(function () {
-                console.log("nextTaskData", nextTaskData);
                 let startDate = getNewDate();
                 nextTaskData["startDate"] = startDate;
                 putDataDB("http://localhost:3000/todoList/" + nextTaskData.id, nextTaskData);
