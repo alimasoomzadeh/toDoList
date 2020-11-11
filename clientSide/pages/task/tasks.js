@@ -9,29 +9,30 @@ $(document).ready(function () {
             let todoList = getDataDB("http://localhost:3000/todoList?userId=" + memberId);
             if (todoList !== undefined && todoList !== null) {
                 for (let i = 0; i < todoList.length; i++) {
-                    let x = 1;
-                    $("#backLogBody").append(
-                        '<div class="col-mb-5  backLogTaskBox">'
-                        + '<div class="box">'
-                        + '<div class="backLogTaskBox-header">'
-                        + '<h5>' + todoList[i].title + '</h5>'
-                        + '</div><div class="backLogTaskBox-body" >'
-                        + todoList[i].description
-                        + '</div>'
-                        + '<div class="backLogTaskBox-footer" >'
-                        + '<label><i class="fas fa-clock iconTime">'
-                        + '</i><span class="numberTime">'
-                        + todoList[i].duration
-                        + '</span><span class="unitTime">' + 'Week'
-                        + '</span></label>'
-                        + '</div></div><div class="middle">'
-                        + '<div class="btnChangeStatus">'
-                        + '<div class="row" >'
-                        + '<div class="col-3  btnTaskModal" data-typeBtn="viewTask" data-id="' + todoList[i].id + '" ><i data-typeBtn="viewTask" data-id="' + todoList[i].id + '" class="fas fa-eye"></i></div>'
-                        + '<div class="col-3  btnTaskModal" data-typeBtn="changeStatusTask" data-id="' + todoList[i].id + '"  ><i data-typeBtn="changeStatusTask" data-id="' + todoList[i].id + '" class="fas fa-edit"></i></div>'
-                        + '</div>'
-                        + '</div></div></div>'
-                    );
+                    if (todoList[i]["status"] === "BACKLOG") {
+                        $("#backLogBody").append(
+                            '<div class="col-mb-5  backLogTaskBox">'
+                            + '<div class="box">'
+                            + '<div class="backLogTaskBox-header">'
+                            + '<h5>' + todoList[i].title + '</h5>'
+                            + '</div><div class="backLogTaskBox-body" >'
+                            + todoList[i].description
+                            + '</div>'
+                            + '<div class="backLogTaskBox-footer" >'
+                            + '<label><i class="fas fa-clock iconTime">'
+                            + '</i><span class="numberTime">'
+                            + todoList[i].duration
+                            + '</span><span class="unitTime">' + 'Week'
+                            + '</span></label>'
+                            + '</div></div><div class="middle">'
+                            + '<div class="btnChangeStatus">'
+                            + '<div class="row" >'
+                            + '<div class="col-3  btnTaskModal" data-typeBtn="viewTask" data-id="' + todoList[i].id + '" ><i data-typeBtn="viewTask" data-id="' + todoList[i].id + '" class="fas fa-eye"></i></div>'
+                            + '<div class="col-3  btnTaskModal" data-typeBtn="changeStatusTask" data-id="' + todoList[i].id + '"  ><i data-typeBtn="changeStatusTask" data-id="' + todoList[i].id + '" class="fas fa-edit"></i></div>'
+                            + '</div>'
+                            + '</div></div></div>'
+                        );
+                    }
                 }
             }
         }
@@ -124,12 +125,10 @@ $(document).ready(function () {
                 console.log("nextTaskData", nextTaskData);
                 let startDate = getNewDate();
                 nextTaskData["startDate"] = startDate;
-                putDataDB("http://localhost:3000/todoList/" + nextTaskData.id,nextTaskData);
+                putDataDB("http://localhost:3000/todoList/" + nextTaskData.id, nextTaskData);
             });
         }
         $('#taskModal').modal('toggle');
-
-
 
 
     });
