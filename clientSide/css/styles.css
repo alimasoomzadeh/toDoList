@@ -111,11 +111,19 @@ html, body {
     background-color: #482563;
 }
 
-.backLogTaskBox{
+.BACKLOGTaskBox{
     border: 1px solid #cfcfcf;
     border-radius: 5px;
     margin: 0 0 3% 3%;
     width: 45%;
+    position: relative;
+    cursor: pointer;
+}
+.SPRINTTaskBox{
+    border: 1px solid #cfcfcf;
+    border-radius: 5px;
+    margin: 0 0 3% 3%;
+    width: 100%;
     position: relative;
     cursor: pointer;
 }
@@ -162,11 +170,20 @@ html, body {
     transition: .99s ease;
 }
 
-.backLogTaskBox:hover .box{
+.BACKLOGTaskBox:hover .box{
     opacity: 0.3;
 }
 
-.backLogTaskBox:hover .middle {
+.BACKLOGTaskBox:hover .middle {
+    opacity: 1;
+    height: 36%;
+}
+
+.SPRINTTaskBox:hover .box{
+    opacity: 0.3;
+}
+
+.SPRINTTaskBox:hover .middle {
     opacity: 1;
     height: 36%;
 }
