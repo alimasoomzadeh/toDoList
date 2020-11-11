@@ -56,6 +56,26 @@ function postDataDB(url, data) {
     return returnValue;
 }
 
+function putDataDB(url, data) {
+    let returnValue;
+    $.ajax({
+        url: url,
+        type: 'PUT',
+        dataType: 'json',
+        data: JSON.stringify(data),
+        contentType: 'application/json',
+        success: function (data) {
+            returnValue = data;
+        },
+        error: function (xhr, status, error) {
+            let err = eval("(" + xhr.responseText + ")");
+            returnValue = err.Message;
+        },
+        async: false
+    });
+    return returnValue;
+}
+
 
 function getNewDate() {
     let date = new Date();
