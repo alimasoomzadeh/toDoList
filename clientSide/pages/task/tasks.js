@@ -123,6 +123,8 @@ $(document).ready(function () {
                 let startDate = getNewDate();
                 nextTaskData["startDate"] = startDate;
                 putDataDB("http://localhost:3000/todoList/" + nextTaskData.id, nextTaskData);
+                $('#taskModal').modal('hide');
+                location.reload();
             });
         }
         $('#taskModal').modal('toggle');
