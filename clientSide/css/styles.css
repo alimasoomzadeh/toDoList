@@ -127,6 +127,14 @@ html, body {
     position: relative;
     cursor: pointer;
 }
+.COMPLETEDTaskBox{
+    border: 1px solid #cfcfcf;
+    border-radius: 5px;
+    margin: 0 0 3% 3%;
+    width: 45%;
+    position: relative;
+    cursor: pointer;
+}
 .backLogTaskBox-header{
     background-color: #edc7fd;
     border-bottom: 1px solid #cfcfcf;
@@ -184,6 +192,15 @@ html, body {
 }
 
 .SPRINTTaskBox:hover .middle {
+    opacity: 1;
+    height: 36%;
+}
+
+.COMPLETEDTaskBox:hover .box{
+    opacity: 0.3;
+}
+
+.COMPLETEDTaskBox:hover .middle {
     opacity: 1;
     height: 36%;
 }
