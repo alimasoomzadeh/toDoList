@@ -7,4 +7,11 @@ to work with CRUD restAPI and task management
 `json-server --watch db.json`    in serverSide folder in cmd
 Open [http://192.168.1.106:8000/](http://192.168.1.106:8000/) to view it in the browser.
 
+     
+## Prerequisites    
+- json server
+- http server
+- Node.js
+- yarn
+
 
