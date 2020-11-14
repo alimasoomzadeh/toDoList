@@ -14,4 +14,40 @@ Open [http://192.168.1.106:8000/](http://192.168.1.106:8000/) to view it in the 
 - Node.js
 - yarn
 
+## Installing
+
+#### Node.js
+Download the node.js source code or a pre-Built installer for Your platform
+
+#### yarn
+`yarn install`  
+
+#### json server 
+`yarn add -g json-server`  in serverSide folder
+     
+#### json server 
+`yarn add -g json-server` 
+    
+#### http server 
+`yarn add --global http-server`     
+
+#### bootstrap 
+`yarn add bootstrap`     
+
+#### jquery
+`yarn add jquery`    
+
+#### fortawesome
+`yarn add @fortawesome/fontawesome-free` 
+
+## Business Page 
+
+* create new task 
+* change status task
+
+## Authors
+Ali Masoomzadeh     
+ ##### github:  [https://github.com/alimasoomzadeh]()     
+ ##### linkdin: [www.linkedin.com/in/alimasoomzadeh/]()
+    
 
