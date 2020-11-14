@@ -50,4 +50,11 @@ Ali Masoomzadeh
  ##### github:  [https://github.com/alimasoomzadeh]()     
  ##### linkdin: [www.linkedin.com/in/alimasoomzadeh/]()
     
+## Links
 
+##### node: [https://nodejs.org/en/]()
+##### yarn: [https://yarnpkg.com/]()
+##### json server: [https://github.com/typicode/json-server]()
+##### http server: [https://www.npmjs.com/package/http-server]()
+##### bootstrap :  [https://getbootstrap.com/docs/4.5/getting-started/download/]()
+##### jquery :  [https://jquery.com/download/]()
