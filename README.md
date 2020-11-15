@@ -1,4 +1,4 @@
-# javaScript, jquery, bootstrap and json server
+# toDoList (javaScript, jquery, bootstrap and json server)
 
 An experimental project (bootstrap, css)
 to work with CRUD restAPI and task management
